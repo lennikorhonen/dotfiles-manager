@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,6 +23,7 @@
     firefox
     btop
     bat
+    zellij
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -33,7 +33,7 @@
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    (nerdfonts.override { fonts = [ "UbuntuMono" ]; })
+    (nerdfonts.override { fonts = [ "UbuntuMono" "FiraCode" "JetBrainsMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -45,7 +45,9 @@
 
   # Programs configured with nix+home-manager
   imports = [
+    ./apps/alacritty.nix
     ./apps/git.nix
+    ./apps/tmux.nix
     ./apps/zsh.nix
   ];
 
@@ -57,7 +59,6 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
-    ".config/alacritty".source = dotfiles/alacritty;
     ".config/nvim".source = dotfiles/nvim;
     ".config/i3".source = dotfiles/i3;
     # # You can also set the file content immediately.
